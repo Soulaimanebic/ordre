@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en", xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulair</title>
+
+    <style type="text/css">
+        div{
+            background-color: #e8e4e1;
+
+        }
+
+        label {
+            display:  inline-block;
+            width: 200px;
+            margin: 5px;
+            text-align: left;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+            padding-left: 10px ;
+            /*float: left;*/
+
+        }
+        button{
+            margin: 10px;
+            padding: 10px;
+        }
+        input[type=text]
+        {
+            display: inline-block;
+            width: 440px;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+            padding-left: 10px;
+            margin-left: -10px;
+
+
+
+        }
+        select{
+            display: inline-block;
+            width: 455px;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+            padding-left: 10px;
+            margin-left: -10px;
+
+
+        }
+        textarea{
+            display: inline-block;
+            width: 400px;
+            border-width: 1px;
+            border-color: black;
+            border-style: solid;
+            padding-left: 10px;
+            margin-left: -10px;
+
+
+
+
+
+        }
+    </style>
+</head>
+<body>
+  <div align="center">
+    <h1>Ordre de Mission</h1>
+      <form action="#" th:action="@{/register}" th:object="${form}" method="post">
+
+          <label style="margin-left: 200px;padding-left: 10px;width: 50px">Fait à</label>
+          <input style="width: 100px" type="text" th:field="*{fait}"/>
+
+          <label style="width: 130px">Le : (dd-mm-yyyy) </label>
+          <input style="width: 100px" type="text" th:field="*{datecre}"/><br>
+
+          <label>Mr.(nom,prénom) :</label>
+          <input type="text" th:field="*{nom}"/><br>
+
+          <label>Fonction :</label>
+            <select th:field="*{fonction}">
+              <option th:each="p : ${fonctionList}" th:value="${p}" th:text="${p}"/>
+
+          </select><br>
+
+          <label style="width: 650px">Est autorisé à se rendre:</label><br>
+
+          <label>Au chantier destination</label>
+          <input type="text" th:field="*{chantier_destination}"/><br>
+
+          <label>Affectation Analytique</label>
+          <input type="text" th:field="*{affect_analytique}"/><br>
+
+
+          <label style="width: 650px">Pour une durée de :</label><br>
+
+          <label>Du : (dd-mm-yyyy)</label>
+          <input style="width: 140px" type="text" th:field="*{date_deb}"/>
+          <label style="width: 140px;margin-left: -5px">Au : (dd-mm-yyyy)</label>
+          <input style="width: 140px" type="text" th:field="*{date_fin}"/><br>
+
+
+          <label>Nombre de jours :</label>
+          <input type="text" th:field="*{duree}"/><br>
+
+
+
+          <label >Pour la mission suivant:</label>
+            <textarea style="width: 442px" rows="1" cols="40" th:field="*{la_mission_suivante}"></textarea>
+
+            <label style="width: 650px">Il sera accompagné de :</label><br>
+
+
+            <label >MR</label>
+            <input style="width: 150px" type="text" th:field="*{mr_1}"/>
+            <label style="width: 80px;margin-left: -5px">Fonction :</label>
+                <select style="width: 200px" th:field="*{fonction}">
+                    <option th:each="p : ${fonctionList}" th:value="${p}" th:text="${p}"/>
+
+                </select><br>
+            <label >MR</label>
+            <input style="width: 150px" type="text" th:field="*{mr_2}"/>
+            <label style="width: 80px;margin-left: -5px">Fonction :</label>
+                <select style="width: 200px" th:field="*{fonction}">
+                    <option th:each="p : ${fonctionList}" th:value="${p}" th:text="${p}"/>
+
+                </select><br>
+
+
+
+          <label style="width: 650px" >Il utilisera les moyens de transport suivants :</label><br>
+
+
+          <label>Vehicule de l'établissement :</label>
+          <select th:field="*{véhicule_de_létablissement}">
+              <option th:each="p : ${boolList}" th:value="${p}" th:text="${p}"/>
+
+          </select><br>
+
+          <label>Vehicule personnel</label>
+          <select th:field="*{vehicule_personnel}">
+              <option th:each="p : ${boolList}" th:value="${p}" th:text="${p}"/>
+
+          </select><br>
+
+          <label>Véhicule personnel de MR</label>
+          <input type="text" th:field="*{véhicule_personnel_de_mr}"/><br>
+
+
+          <label>Transport en commun :</label>
+              <select th:field="*{transport_en_commun}">
+                  <option th:each="p : ${typeList}" th:value="${p}" th:text="${p}"/>
+
+              </select><br>
+
+          <label>Autre :</label>
+          <input type="text" th:field="*{autre}"/><br>
+
+
+
+
+          <br><button type="submit">Envoyer</button>
+
+      </form>
+  </div>
+
+</body>
+</html>
